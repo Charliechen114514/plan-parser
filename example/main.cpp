@@ -1,15 +1,3 @@
-# plan-parser
-
-Plan Parser是一个简单的从Markdown或者是其他文件(当前只支持Markdown) Parse 得到
-一系列有效块的库。使用该库可以快速的读取和解析包含计划进度的Markdown文件为任何其他目的所使用。
-
-下面是一个使用样例，只需要将这个库添加进入工程依赖中
-``` cmake
-add_executable(example main.cpp)
-target_link_libraries(example PRIVATE PlanParser)
-```
-就可以使用了，比如说
-``` c++
 #include "base_components/base_node.h"
 #include "base_components/heading.h"
 #include "base_components/list.h"
@@ -93,49 +81,3 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 }
-```
-就可以让类似的Markdown文件
-> # 副业草稿指南
-> > 技术栈建议
-> > - 嵌入式 + FreeRTOS
-> > - 前后端 + 动画
-> ## 副业1：技术博客分享与收费
-> 1. 开一个博客基础仓库
-> 2. 持续更新 CSDN
->    1. 写操作系统系列
->    2. 写 Qt 框架系列
-> - [x] 公众号同步
-> - [ ] 简书扩展
-
-打印出来：
-
-```text
-Heading(level=1, text="副业草稿指南")
-> QuoteBlock:
-  Paragraph: 技术栈建议
-  UnorderedList:
-    - 嵌入式 + FreeRTOS
-    - 前后端 + 动画
-Heading(level=2, text="副业1：技术博客分享与收费")
-OrderedList:
-  - 开一个博客基础仓库
-  - 持续更新 CSDN
-    OrderedList:
-      - 写操作系统系列
-      - 写 Qt 框架系列
-  - [task done] 公众号同步
-  - [task todo] 简书扩展
-```
-
-## 构建
-
-非常简单，这个工程没有任何第三方依赖，您只需要运行
-```bash
-cmake -B build -S .
-cd build
-make -j${nproc}
-```
-即可，运行上述示例代码只需要
-```bash
-build/example/example example/test.md # 或者提供test.md的绝对路径
-```

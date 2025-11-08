@@ -1,6 +1,15 @@
 # Prerequisites
 *.d
 
+# Builds
+build/
+
+# Vscode with caches
+.vscode/
+
+# Clangd Cached
+.cache/
+
 # Compiled Object files
 *.slo
 *.lo

@@ -1,0 +1,25 @@
+/**
+ * @file quote.h
+ * @author Charliechen114514 (chengh1922@mails.jlu.edu.cn)
+ * @brief quote holdings
+ * @version 0.1
+ * @date 2025-11-08
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#pragma once
+#include "base_node.h"
+#include <memory>
+#include <vector>
+
+namespace plan_parser::base_components {
+struct IBaseNode;
+struct Quote : public IBaseNode {
+	Quote()
+	    : IBaseNode(BaseNodeType::QUOTE) { }
+	std::vector<std::shared_ptr<IBaseNode>> children;
+};
+
+} // namespace plan_parser::base_components

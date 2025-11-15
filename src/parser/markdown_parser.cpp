@@ -122,8 +122,9 @@ std::shared_ptr<IBaseNode> parse_paragragh(const vector<string>& lines, size_t& 
 			break;
 		}
 
-		if (regex_match(raw, regex(R"(^\s*[#>\-\*\d].*)")))
-			break; // next IBaseNode
+		if (regex_match(raw, regex(R"(^\s*(#|>|(\* |\+ |- |\d+\. )).*)"))) {
+			break; // next block
+		}
 		if (!accum.empty())
 			accum += " ";
 		accum += plan_parser::utils::trim(raw);

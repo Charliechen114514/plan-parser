@@ -1,7 +1,9 @@
 #pragma once
 #include "base_components/base_node.h"
 #include <memory>
+#include <string>
 #include <vector>
+
 namespace plan_parser {
 
 namespace parser {
